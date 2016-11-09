@@ -49,8 +49,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Management">
-      <HintPath>..\..\lib\2012r2\Microsoft.Web.Management.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\lib\2012r2\Microsoft.Web.Management.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
