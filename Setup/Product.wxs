@@ -10,6 +10,10 @@
 		<Feature Id="ProductFeature" Title="PHP Manager for IIS" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
 		</Feature>
+    
+    <CustomAction Id="UtilityInstall" FileKey="Web.Management.PHP.Utility.exe" ExeCommand="--Action Install" Return="check" />
+    <CustomAction Id="UtilityUninstall" FileKey="Web.Management.PHP.Utility.exe" ExeCommand="--Action Uninstall" Return="check" />
+    
 	</Product>
 
 	<Fragment>
@@ -171,5 +175,10 @@
       <ComponentRef Id="Web.Management.PHP.Client.resources.dll.ru_RU.comp"/>
       <ComponentRef Id="Web.Management.PHP.Client.resources.dll.tr_BR.comp"/>
 		</ComponentGroup>
+
+    <InstallExecuteSequence>
+      <Custom Action="UtilityInstall" After="InstallFinalize">REMOVE=""</Custom>
+      <Custom Action="UtilityUninstall" Before="RemoveFiles">REMOVE~="ALL"</Custom>
+    </InstallExecuteSequence>
 	</Fragment>
 </Wix>
