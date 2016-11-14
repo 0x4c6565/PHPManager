@@ -21,42 +21,37 @@ namespace Web.Management.PHP.Utility
             this.Parameters = new StringDictionary();
             string[] parts;
 
-            // Valid parameters forms:
+            // Valid parameter format:
             // {-,/,--}param{ ,=,:}((",')value(",'))
             // Examples: 
             // -param1 value1 --param2 /param3:"Test-:-work" 
-            //   /param4=happy -param5 '--=nice=--'
+            //   /param4=value2 -param5 '--=test=--'
             foreach (string txt in args)
             {
-                // Look for new parameters (-,/ or --) and a
-                // possible enclosed value (=,:)
+                // Look for new parameters (-,/ or --) and a possible enclosed value (=,:)
                 parts = Splitter.Split(txt, 3);
 
                 switch (parts.Length)
                 {
-                    // Found a value (for the last parameter 
-                    // found (space separator))
+                    // Found a value (for the last parameter found (space separator))
                     case 1:
                         AddWaitingParameterUnsanitizedValue(parts[0]);
                         break;
 
                     // Found just a parameter
                     case 2:
-                        // The last parameter is still waiting. 
-                        // With no value, set it to true.
+                        // The last parameter is still waiting with no value, set it to true.
                         AddWaitingParameterValue("true");
                         WaitingParameter = parts[1];
                         break;
 
                     // Parameter with enclosed value
                     case 3:
-                        // The last parameter is still waiting. 
-                        // With no value, set it to true.
+                        // The last parameter is still waiting with no value, set it to true.
                         AddWaitingParameterValue("true");
-
                         WaitingParameter = parts[1];
 
-                        // Remove possible enclosing characters (",')
+                        // Remove possible enclosing characters (",') and add value
                         AddWaitingParameterUnsanitizedValue(parts[2]);
                         break;
                 }
