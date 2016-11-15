@@ -95,6 +95,9 @@
             <Component Id="Web.Management.PHP.Client.dll.GAC_Component" Guid="{F576C18C-A14D-4732-B13F-24E7D80C797C}">
               <File Id="Web.Management.PHP.Client.dll.GAC" Name="Web.Management.PHP.Client.dll" KeyPath="yes" Vital="yes" Assembly=".net" DiskId="1" Source="..\bin\Debug\Web.Management.PHP.Client.dll" />
             </Component>
+            <Component Id="Web.Management.PHP.PowerShell.dll.GAC_Component" Guid="{19E5EECB-A954-43D7-9601-28BAF3EAE6C1}">
+              <File Id="Web.Management.PHP.PowerShell.dll.GAC" Name="Web.Management.PHP.PowerShell.dll" KeyPath="yes" Vital="yes" Assembly=".net" DiskId="1" Source="..\bin\Debug\Web.Management.PHP.PowerShell.dll" />
+            </Component>
             <Directory Id="zhCN_1_Dir" Name="zh-CN">
               <Component Id="Web.Management.PHP.Client.resources.dll.zh_CN.GAC_Component" Guid="{345AFFEE-4104-4635-BE45-02CA7A42F1CB}">
                 <File Id="Web.Management.PHP.Client.resources.dll.GAC" Name="Web.Management.PHP.Client.resources.dll" KeyPath="yes" Vital="yes" Assembly=".net" DiskId="1" Source="..\bin\Debug\zh-CN\Web.Management.PHP.Client.resources.dll" />
@@ -150,6 +153,7 @@
 		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
       <ComponentRef Id="Web.Management.PHP.dll.GAC_Component"/>
       <ComponentRef Id="Web.Management.PHP.Client.dll.GAC_Component"/>
+      <ComponentRef Id="Web.Management.PHP.PowerShell.dll.GAC_Component"/>
       <ComponentRef Id="Web.Management.PHP.Client.resources.dll.zh_CN.GAC_Component"/>
       <ComponentRef Id="Web.Management.PHP.Client.resources.dll.tr_TR.GAC_Component"/>
       <ComponentRef Id="Web.Management.PHP.Client.resources.dll.de_DE.GAC_Component"/>
