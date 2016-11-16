@@ -1,11 +1,12 @@
-﻿using Microsoft.Web.Administration;
+﻿using Microsoft.Deployment.WindowsInstaller;
+using Microsoft.Web.Administration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Web.Management.PHP.Utility
+namespace SetupAction
 {
     public static class UIModuleHelper
     {
@@ -13,7 +14,7 @@ namespace Web.Management.PHP.Utility
         /// <summary> 
         /// Adds the specified UI Module by name 
         /// </summary> 
-        public static void AddUIModuleProvider(string name, string type)
+        public static void AddUIModuleProvider(Session session, string name, string type)
         {
             using (var mgr = new ServerManager())
             {
@@ -29,7 +30,7 @@ namespace Web.Management.PHP.Utility
                     moduleProvider.SetAttributeValue("name", name);
                     moduleProvider.SetAttributeValue("type", type);
 
-                    Console.WriteLine("Adding module provider..");
+                    session.Log("Adding module provider..");
                     moduleProviders.Add(moduleProvider);
                 }
 
@@ -41,7 +42,7 @@ namespace Web.Management.PHP.Utility
                     var module = modules.CreateElement();
                     module.SetAttributeValue("name", name);
 
-                    Console.WriteLine("Adding module..");
+                    session.Log("Adding module..");
                     modules.Add(module);
                 }
 
@@ -60,7 +61,7 @@ namespace Web.Management.PHP.Utility
         /// <summary> 
         /// Removes the specified UI Module by name 
         /// </summary> 
-        public static void RemoveUIModuleProvider(string name)
+        public static void RemoveUIModuleProvider(Session session, string name)
         {
             using (var mgr = new ServerManager())
             {
@@ -71,7 +72,7 @@ namespace Web.Management.PHP.Utility
                 var module = FindByAttribute(modules, "name", name);
                 if (module != null)
                 {
-                    Console.WriteLine("Removing module..");
+                    session.Log("Removing module..");
                     modules.Remove(module);
                 }
 
@@ -81,7 +82,7 @@ namespace Web.Management.PHP.Utility
                 var moduleProvider = FindByAttribute(moduleProviders, "name", name);
                 if (moduleProvider != null)
                 {
-                    Console.WriteLine("Removing module provider..");
+                    session.Log("Removing module provider..");
                     moduleProviders.Remove(moduleProvider);
                 }
 
