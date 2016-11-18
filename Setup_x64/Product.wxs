@@ -7,6 +7,9 @@
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 		<MediaTemplate EmbedCab="yes" />
 
+    <Icon Id="icon.ico" SourceFile="php-logo16.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+
 		<Feature Id="ProductFeature" Title="PHP Manager for IIS" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
 		</Feature>
@@ -145,6 +148,9 @@
 	</Fragment>
 
 	<Fragment>
+    
+    <UIRef Id="WixUI_ErrorProgressText" />
+    
 		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
       <ComponentRef Id="Web.Management.PHP.dll.GAC_Component"/>
       <ComponentRef Id="Web.Management.PHP.Client.dll.GAC_Component"/>
