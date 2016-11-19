@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
 	<Product Id="6086fe2c-5e75-4151-bc37-4e8908d894ac" Name="PHP Manager for IIS" Language="1033" Version="1.4.2.0" Manufacturer="PHP Manager Project" UpgradeCode="10330204-49c5-45fc-b0c1-cd4fb7d685fc">
         
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Platform="x64"/>
@@ -9,6 +9,15 @@
 
     <Icon Id="icon.ico" SourceFile="php-logo16.ico"/>
     <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+    
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+    <UIRef Id="WixUI_Minimal" />
+    <!--<UIRef Id="WixUI_ErrorProgressText" />-->
+
+    <PropertyRef Id="NETFRAMEWORK35"/>
+    <Condition Message="This application requires .NET Framework 3.5. Please install the .NET Framework then run this installer again.">
+      <![CDATA[Installed OR NETFRAMEWORK35]]>
+    </Condition>
 
 		<Feature Id="ProductFeature" Title="PHP Manager for IIS" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
